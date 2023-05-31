@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Enrollment Form</title>
+    <style>
+        body {
+            background-color: skyblue;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: skyblue;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #enrolledList {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #enrolledList li {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Enrollment Form</h1>
+        <div id="output"></div>
+        <form id="enrollmentForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="course">Course:</label>
+                <input type="text" id="course" name="course" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Enroll</button>
+            </div>
+        </form>
+        <ul id="enrolledList"></ul>
+    </div>
+
+    <script>
+        document.getElementById('enrollmentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var course = document.getElementById('course').value;
+
+            var enrolledList = document.getElementById('enrolledList');
+            var listItem = document.createElement('li');
+            listItem.innerHTML = `<strong>Name:</strong> ${name}, <strong>Email:</strong> ${email}, <strong>Course:</strong> ${course}`;
+            enrolledList.appendChild(listItem);
+
+            document.getElementById('enrollmentForm').reset();
+        });
+    </script>
+</body>
+</html>
